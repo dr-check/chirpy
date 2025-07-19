@@ -54,6 +54,12 @@ func main() {
 
 	sMux.HandleFunc("POST /api/chirps", apiCfig.handlerChirp)
 
+	sMux.HandleFunc("GET /api/chirps", apiCfig.handlerChirps)
+
+	sMux.HandleFunc("GET /api/chirps/{chirpId}", apiCfig.handlerGetChirpById)
+
+	sMux.HandleFunc("POST /api/login", apiCfig.handlerLogin)
+
 	sMux.HandleFunc("GET /api/healthz", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		w.WriteHeader(http.StatusOK)
